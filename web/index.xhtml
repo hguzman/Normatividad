@@ -6,18 +6,6 @@
       xmlns:p="http://primefaces.org/ui">
     <h:body>
         <ui:composition template="/templates/plantilla.xhtml">
-            <ui:define name="izquierda">
-                <h:form>
-                    <p:menu style="font-size: 12px;margin-left: 10px;margin-top: 10px;margin-right: 10px">
-                        <p:submenu label="Consultas">
-                            <p:menuitem value="Buscar por Número" action="/consultas/consultaNumero?faces-redirect=true"/>
-                            <p:menuitem value="Buscar por Fecha"/>
-                            <p:menuitem value="Buscar por Concepto"/>
-                            
-                        </p:submenu>
-                    </p:menu>                    
-                </h:form>
-            </ui:define>
             <ui:define name="centro">
                 <p:panel style="margin: 10px;font-size: 12px">
                     En este apartado se encuentra todo lo relacionado con actos administrativo

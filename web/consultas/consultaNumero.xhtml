@@ -10,10 +10,22 @@
             <ui:define name="centro">
                 <p:panel style="margin: 10px">
                     <h:form id="formulario">
-                        <p:dataTable id="normas">
-                            <f:facet name="header">
-                                Listado de Normatividad
-                            </f:facet>
+                        <p:dataTable id="normas" var="nor" value="#{ctrlNorma.lista}" emptyMessage="No encontrado" style="font-size: 12px">
+                            <p:column id="numero" filterBy="#{nor.numero}"   
+                                    headerText="Número" footerText="contains"  
+                                    filterMatchMode="contains">  
+                                <h:outputText value="#{nor.numero}" />  
+                            </p:column>  
+                            <p:column id="fecha" filterBy="#{nor.fecha}"   
+                                    headerText="Fecha" footerText="startsWith">  
+                                <h:outputText value="#{nor.fecha}" />  
+                            </p:column>  
+                            <p:column id="texto" filterBy="#{nor.descripcion}"   
+                                    headerText="Descripción" footerText="contains"  
+                                    filterMatchMode="contains">  
+                                <h:outputText value="#{nor.descripcion}" />  
+                            </p:column>  
+                            
                         </p:dataTable>
                     </h:form>
                 </p:panel>                
