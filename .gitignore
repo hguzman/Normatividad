@@ -4,7 +4,7 @@
 *.jar
 *.war
 *.ear
-*.properties
+Etiquetas.properties
 
 nbproject/private/
 build/
