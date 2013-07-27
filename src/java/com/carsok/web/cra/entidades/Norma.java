@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 public class Norma implements IEntidad{
     private int _numero;
     private int _idTipo;
+    private String _tipo;
     private Timestamp _fecha;
     private String _descripcion;
     private String _archivo;
