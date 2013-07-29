@@ -57,5 +57,13 @@ public class Norma implements IEntidad{
     public boolean comparar(IEntidad objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String getTipo() {
+        return _tipo;
+    }
+
+    public void setTipo(String _tipo) {
+        this._tipo = _tipo;
+    }
     
 }

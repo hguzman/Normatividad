@@ -59,7 +59,7 @@ public class NormaDao extends BaseDatos implements IPersistencia{
 
     public List<Norma> listaNormas() {
         List<Norma> listNormas= new ArrayList<>();
-        _sql="select * from normas";
+        _sql="select n.numero,n.idtipo,n.fecha,n.descripcion,n.archivo,t.norma from normas n, tipos_normas t where n.idtipo=t.idtipo;";
         PreparedStatement sentencia=crearSentencia(_sql);
         ResultSet rsNormas=consultar(sentencia);
         try {
@@ -70,6 +70,7 @@ public class NormaDao extends BaseDatos implements IPersistencia{
                 norma.setFecha(rsNormas.getTimestamp("fecha"));
                 norma.setDescripcion(rsNormas.getString("descripcion"));
                 norma.setArchivo(rsNormas.getString("archivo"));
+                norma.setTipo(rsNormas.getString("norma"));
                 listNormas.add(norma);
             }
         } catch (SQLException ex) {

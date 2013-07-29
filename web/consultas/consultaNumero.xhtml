@@ -10,23 +10,66 @@
             <ui:define name="centro">
                 <p:panel style="margin: 10px">
                     <h:form id="formulario">
-                        <p:dataTable id="normas" var="nor" value="#{ctrlNorma.lista}" emptyMessage="No encontrado" style="font-size: 12px">
+                        <p:dataTable id="normas" 
+                                     var="nor" 
+                                     value="#{ctrlNorma.lista}" 
+                                     emptyMessage="No encontrado" 
+                                     filteredValue="#{ctrlNorma.normasFiltradas}" 
+                                     style="font-size: 11px" 
+                                     paginator="true" 
+                                     rows="9">
                             <p:column id="numero" filterBy="#{nor.numero}"   
-                                    headerText="Número" footerText="contains"  
+                                    headerText="Número" footerText="Contiene"  
                                     filterMatchMode="contains">  
                                 <h:outputText value="#{nor.numero}" />  
                             </p:column>  
                             <p:column id="fecha" filterBy="#{nor.fecha}"   
-                                    headerText="Fecha" footerText="startsWith">  
+                                    headerText="Fecha" footerText="Inicia Con">  
                                 <h:outputText value="#{nor.fecha}" />  
                             </p:column>  
+                            <p:column id="manufacturerColumn" filterBy="#{nor.tipo}"   
+                                    headerText="Tipo Norma" footerText="Exacto"  
+                                    filterOptions="#{ctrlNorma.tiposNormas}"  
+                                    filterMatchMode="exact">  
+                                <h:outputText value="#{nor.tipo}" />  
+                            </p:column>                              
                             <p:column id="texto" filterBy="#{nor.descripcion}"   
-                                    headerText="Descripción" footerText="contains"  
+                                    headerText="Descripción" footerText="Contiene"  
                                     filterMatchMode="contains">  
                                 <h:outputText value="#{nor.descripcion}" />  
                             </p:column>  
-                            
+                            <p:column style="width:4%">  
+                                    <p:commandButton id="selectButton" update=":formulario:display" oncomplete="dialogoNorma.show()" icon="ui-icon-search" title="View">  
+                                        <f:setPropertyActionListener value="#{nor}" target="#{ctrlNorma.normaSeleccionada}" />  
+                                </p:commandButton>  
+                            </p:column>                              
                         </p:dataTable>
+                        <p:dialog header="Detalle Norma" widgetVar="dialogoNorma" resizable="false" id="carDlg"  
+                                  showEffect="fade" hideEffect="explode" modal="false">  
+
+                            <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
+
+                                <f:facet name="header">  
+                                    <p:media value="/archivos/contrato.pdf" width="100%" height="320px" style="margin-left: 5px; margin-right: 5px">  
+                                    Your browser can't display pdf, <h:outputLink value="/archivos/contrato.pdf">click</h:outputLink> to download pdf instead.  
+                                    </p:media>  
+                                    
+                                </f:facet>  
+
+                                <h:outputText value="Número:" />  
+                                <h:outputText value="#{ctrlNorma.normaSeleccionada.numero}" style="font-weight:bold"/>  
+
+                                <h:outputText value="Fecha:" />  
+                                <h:outputText value="#{ctrlNorma.normaSeleccionada.fecha}" style="font-weight:bold"/>  
+
+
+                                <h:outputText value="Norma:" />  
+                                <h:outputText value="#{ctrlNorma.normaSeleccionada.tipo}" style="font-weight:bold"/>  
+
+
+                            </h:panelGrid>  
+
+                        </p:dialog>                          
                     </h:form>
                 </p:panel>                
             </ui:define>
