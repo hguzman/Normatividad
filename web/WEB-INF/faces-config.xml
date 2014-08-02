@@ -9,13 +9,12 @@
             <supported-locale>en</supported-locale>
         </locale-config>
         <resource-bundle>
+            <base-name>com.carsok.web.cra.recursos.Conexion</base-name>
+            <var>conexion</var>
+        </resource-bundle>
+        <resource-bundle>
             <base-name>com.carsok.web.cra.recursos.Etiquetas</base-name>
             <var>msg</var>
         </resource-bundle>
     </application>
-    <managed-bean>
-        <managed-bean-name>ctrlNorma</managed-bean-name>
-        <managed-bean-class>com.carsok.web.cra.controladores.CtrlNorma</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
 </faces-config>

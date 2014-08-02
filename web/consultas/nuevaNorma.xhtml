@@ -3,13 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
     <h:body>
         <ui:composition template="/templates/plantilla.xhtml">
             <ui:define name="centro">
-                <p:panel style="margin: 10px;font-size: 12px">
-                    espacio para la nueva norma
-                </p:panel>
+                <p:panel header="Registro Normas Ambientales">
+                    <h:form enctype="multipart/form-data">
+                                <p:messages showDetail="true" id="mensaje"/>  
+                                <t:inputFileUpload value="#{ctrlNorma.file}" immediate="false"/>
+                                <p:commandButton value="Guardar" action="#{ctrlNorma.guardar()}" update="mensaje" ajax="false"/>
+                    </h:form>
+                </p:panel>                
             </ui:define>
         </ui:composition>
 

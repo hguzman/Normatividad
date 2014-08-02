@@ -18,7 +18,7 @@ public class BaseDatos extends Observable{
 //	private String _url="jdbc:mysql://localhost:3306/simeone2013";
 //	private String _url="jdbc:mysql://190.1.168.222:3306/simeone2013";
 //	private String _url="jdbc:mysql://192.168.1.10:3306/simeone2013";
-	private String _url= ResourceBundle.getBundle("com/carsok/web/cra/recursos/Etiquetas").getString("url_base_datos");
+	private String _url= ResourceBundle.getBundle("com/carsok/web/cra/recursos/Conexion").getString("url_base_datos");
 	private String _usuario;
 	private String _passwd;
 	private PreparedStatement _sentencia;	

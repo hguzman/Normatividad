@@ -7,13 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 public class NormaDao extends BaseDatos implements IPersistencia{
-    protected static final Logger log=Logger.getLogger(NormaDao.class.getName());
+    protected static final Logger logNorma=Logger.getLogger(NormaDao.class.getName());
     private String _sql;
 
     public NormaDao() {
+        BasicConfigurator.configure();
         setUsuario("root");
         setPasswd("usrio01");
         conectar();
@@ -21,7 +23,20 @@ public class NormaDao extends BaseDatos implements IPersistencia{
         
     @Override
     public int insertar(IEntidad obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Norma objNorma=(Norma) obj;
+        _sql="insert into normas value(?,?,?,?,?)";
+        PreparedStatement sentencia=crearSentencia(_sql);
+
+        try {
+            sentencia.setInt(1, objNorma.getNumero());
+            sentencia.setInt(2, objNorma.getIdTipo());
+            sentencia.setTimestamp(3, objNorma.getFecha());
+            sentencia.setString(4, objNorma.getDescripcion());
+            sentencia.setString(5, objNorma.getArchivo());
+        } catch (SQLException ex) {
+            logNorma.debug(ex.getStackTrace());
+        }
+        return actualizar(sentencia);
     }
 
     @Override
@@ -41,7 +56,7 @@ public class NormaDao extends BaseDatos implements IPersistencia{
                 listNormas.add(norma);
             }
         } catch (SQLException ex) {
-            log.debug(ex.getStackTrace());
+            logNorma.debug(ex.getStackTrace());
         }
         return listNormas;
         
@@ -74,7 +89,7 @@ public class NormaDao extends BaseDatos implements IPersistencia{
                 listNormas.add(norma);
             }
         } catch (SQLException ex) {
-            log.debug(ex.getStackTrace());
+            logNorma.debug(ex.getStackTrace());
         }
         return listNormas;
         

@@ -4,8 +4,8 @@
 *.jar
 *.war
 *.ear
-Etiquetas.properties
-
+#Etiquetas.properties
+Conexion.properties
 nbproject/private/
 build/
 nbbuild/

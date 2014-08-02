@@ -8,6 +8,14 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>south-street</param-value>
     </context-param>        
+<filter>
+    <filter-name>Extensions Filter</filter-name>
+    <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>Extensions Filter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+</filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -23,6 +31,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/consultas/consultaNumero.xhtml</welcome-file>
+        <welcome-file>faces/consultas/nuevaNorma.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
